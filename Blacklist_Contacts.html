@@ -67,11 +67,11 @@
             <h2 class="text-xl font-semibold">Blacklist Using:</h2>
             <div class="mt-2">
                 <label class="inline-flex items-center">
-                    <input type="radio" name="blacklist_option" class="form-radio text-blue-500" value="email" onclick="toggleInput('email')">
+                    <input type="radio"  id="emailRadio" name="blacklist_option" class="form-radio text-blue-500" value="email" onclick="toggleInput('email')">
                     <span class="ml-2">Email</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" name="blacklist_option" class="form-radio text-blue-500" value="phone" onclick="toggleInput('phone')">
+                    <input type="radio"  id="phoneRadio" name="blacklist_option" class="form-radio text-blue-500" value="phone" onclick="toggleInput('phone')">
                     <span class="ml-2">Phone</span>
                 </label>
             </div>
@@ -130,6 +130,7 @@
             formData.append('name', name);
             formData.append('phone', phone);
             formData.append('email', email);
+            formData.append('phoneRadio', phoneRadio);
     
             // Send the data to the Google Apps Script web app
             fetch('https://script.google.com/macros/s/AKfycby5h3Q63d3jhzMv5_tPuctffPkg64wQrfNj5O88RVZqZ0pgNi49UB91E3NO_rjIMy0k/exec', {
@@ -157,10 +158,12 @@
             validationMessage.textContent = ''; // Clear validation message
 
             if (option === 'email') {
+                phoneRadio = 'email'
                 contactInput.placeholder = 'Enter Email';
                 contactInput.type = 'email';
                 contactInput.disabled = false;
             } else if (option === 'phone') {
+                phoneRadio = 'phone'
                 contactInput.placeholder = 'Enter Phone';
                 contactInput.type = 'tel';
                 contactInput.disabled = false;
