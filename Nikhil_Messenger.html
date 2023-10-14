@@ -8494,6 +8494,12 @@ textarea.form-control {
       .catch(error => {
       });
 		document.write("<center><h1>Thank you for submitting your request. You can expect to receive a message in few minutes.</h1></center>");
+		var goBackButton = document.createElement("button");
+                goBackButton.innerText = "Go Back";
+                goBackButton.onclick = function() {
+                location.reload();
+                };
+                document.body.appendChild(goBackButton);
 		}
 	  }
 
