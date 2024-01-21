@@ -8444,26 +8444,23 @@ textarea.form-control {
 	</section>
 
 	<script>
-// Function to fetch image names from a folder
+// Function to fetch image names from imagenames.txt file
 function fetchImageNames() {
-    const folderPath = 'Martech Cloud/'; // Change this to your folder path
+    const filePath = 'Martech Cloud/imagenames.txt'; // Change this to your file path
     const dropdown = document.getElementById('email');
 
-    // Fetch images using the File API
-    fetch(folderPath)
+    // Fetch the content of imagenames.txt file
+    fetch(filePath)
         .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            // Extract image names from the HTML content
-            const imageNames = Array.from(doc.querySelectorAll('a')).map(link => link.textContent);
+        .then(content => {
+            // Split the content into an array of image names
+            const imageNames = content.split(',');
 
             // Populate the dropdown with image names
             imageNames.forEach(imageName => {
                 const option = document.createElement('option');
-                option.value = imageName;
-                option.textContent = imageName;
+                option.value = imageName.trim(); // Trim to remove leading/trailing whitespaces
+                option.textContent = imageName.trim();
                 dropdown.appendChild(option);
             });
         })
