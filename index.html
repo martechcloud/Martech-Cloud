@@ -8469,6 +8469,14 @@ function fetchImageNames() {
 
 // Call the fetchImageNames function when the page loads
 document.addEventListener('DOMContentLoaded', fetchImageNames);
+
+// Function to handle the change event of the dropdown
+function changeImage() {
+    const selectedImage =document.getElementById('email').value;
+
+        // Add your logic to handle the selected image URL as needed
+    console.log('Selected Image URL:', selectedImage);
+}
 </script>
 
 
@@ -8513,8 +8521,7 @@ document.addEventListener('DOMContentLoaded', fetchImageNames);
       function changeImage() {
         var image = document.getElementById("image");
         var dropdown = document.getElementById("email");
-        var selectedImage = 'Martech Cloud/' + dropdown.value + '.jpg';
-	var selectedImageURL = selectedImageName + '.jpg';
+	var selectedImage = 'Martech Cloud/' + dropdown.value + 'jpg';
         image.src = selectedImage;
       }
 	</script>
