@@ -8411,14 +8411,7 @@ textarea.form-control {
 													<label class="label" for="email">Select Template</label>
 													<select type="text" class="form-control" name="email" id="email" placeholder="select" onchange="changeImage()" required>
                                                         <option value="">Select Template</option>
-						        <option value="http://drive.google.com/uc?export=view&id=17So35l6A_3PSLvnqeyBF0MKis0zQXYpA">internet_promo_1</option>
-							<option value="http://drive.google.com/uc?export=view&id=1T3qrGW3jDsjx8wB9xCkX6mQdyWCp-vXC">internet_promo_2</option>
-							<option value="http://drive.google.com/uc?export=view&id=1hcgJKR2TK7LXRORQEwle0rlJF3jsdaok">internet_promo_3</option>
-	                                                <option value="http://drive.google.com/uc?export=view&id=1kBbN2SKhYy01-quHNS87SId91XBJGewk">diwali_promo_1</option>
-														
-														
-                                                        
-                                                        
+				
                                                     </select>
 												</div>
 											</div>
@@ -8441,7 +8434,7 @@ textarea.form-control {
 								</div>
 							</div>
 							<div class="col-md-5 d-flex align-items-stretch">
-								<img class="info-wrap w-100 p-11 img" id="image" src="http://drive.google.com/uc?export=view&id=14Hgmp4lahDDyndvnH0XD6hUyAIRyugrp" alt="Image">
+								<img class="info-wrap w-100 p-11 img" id="image" src="Martech Cloud/messenger.gif" alt="Image">
 			          </div>
 							</div>
 						</div>
@@ -8451,6 +8444,48 @@ textarea.form-control {
 		</div>
 	</section>
 	<script>
+
+// Function to fetch image names from imagenames.txt file
+function fetchImageNames() {
+    const filePath = 'Martech Cloud/sn/imagenames.txt'; // Change this to your file path
+    const dropdown = document.getElementById('email');
+
+    // Fetch the content of imagenames.txt file
+    fetch(filePath)
+        .then(response => response.text())
+        .then(content => {
+            // Split the content into an array of image names
+            const imageNames = content.split(',');
+
+            // Populate the dropdown with image names
+            imageNames.forEach(imageName => {
+                const option = document.createElement('option');
+                option.value = imageName.trim(); // Trim to remove leading/trailing whitespaces
+                option.textContent = imageName.trim();
+                dropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching image names:', error));
+}
+
+// Call the fetchImageNames function when the page loads
+document.addEventListener('DOMContentLoaded', fetchImageNames);
+
+// Function to handle the change event of the dropdown
+function changeImage() {
+    const selectedImage =document.getElementById('email').value;
+
+        // Add your logic to handle the selected image URL as needed
+    console.log('Selected Image URL:', selectedImage);
+}
+</script>
+
+
+
+
+
+
+	<script>	
         var cellNumber = "D6";
         // Replace 'WEB_APP_URL' with the actual web app URL obtained in step 3
         var webAppUrl = 'https://script.google.com/macros/s/AKfycbxKiSPISfUwk03wXrxjERfGiN4OprqgYv3rAobW9MAOh1RR3sf03zRO335pSCS_XR8T/exec?cellNumber=' + cellNumber;
@@ -8508,7 +8543,7 @@ textarea.form-control {
       function changeImage() {
         var image = document.getElementById("image");
         var dropdown = document.getElementById("email");
-        var selectedImage = dropdown.value;
+        var selectedImage = 'Martech Cloud/sn/' + dropdown.value + '.png';
         image.src = selectedImage;
       }
 	</script>
