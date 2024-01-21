@@ -8410,12 +8410,7 @@ textarea.form-control {
 												<div class="form-group">
 													<label class="label" for="email">Select Template</label>
 													<select type="text" class="form-control" name="email" id="email" placeholder="select" onchange="changeImage()" required>
-                                                        <option value="">Select Template</option>
-                                                        <option value="https://drive.google.com/uc?export=view&id=1-f3Vlp3eZQBRZAz_ihSgBnn7c9cTjjBi">martechpromo1</option>
-                                                        <option value="https://drive.google.com/uc?id=1jxxqTOfmC0NtF9pJcAnYerMMYkAobXbo">promoseries_1</option>
-                                                        <option value="https://drive.google.com/uc?export=view&id=1G2yQXbGQZy0IMC85R64OTKI8CkhmVMJz">promoseries_2</option>
-                                                        
-                                                        
+                                                        <option value="">Select Template</option>                
                                                     </select>
 												</div>
 											</div>
@@ -8447,6 +8442,47 @@ textarea.form-control {
 			</div>
 		</div>
 	</section>
+
+	<script>
+// Function to fetch image names from a folder
+function fetchImageNames() {
+    const folderPath = 'Martech Cloud/'; // Change this to your folder path
+    const dropdown = document.getElementById('email');
+
+    // Fetch images using the File API
+    fetch(folderPath)
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Extract image names from the HTML content
+            const imageNames = Array.from(doc.querySelectorAll('a')).map(link => link.textContent);
+
+            // Populate the dropdown with image names
+            imageNames.forEach(imageName => {
+                const option = document.createElement('option');
+                option.value = imageName;
+                option.textContent = imageName;
+                dropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching image names:', error));
+}
+
+// Call the fetchImageNames function when the page loads
+document.addEventListener('DOMContentLoaded', fetchImageNames);
+
+// Function to handle the change event of the dropdown
+function changeImage() {
+    const selectedImage = document.getElementById('email').value;
+    // Add your logic to handle the selected image URL as needed
+    console.log('Selected Image URL:', selectedImage);
+}
+</script>
+
+
+
 
 	<script>
 		function AddRow()
