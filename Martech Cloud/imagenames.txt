@@ -1,1 +1,1 @@
-promoseries_1,promoseries_2,martechpromo1
+promoseries_2,promoseries_1,martechpromo1
