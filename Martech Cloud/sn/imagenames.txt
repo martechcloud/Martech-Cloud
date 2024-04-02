@@ -1,1 +1,1 @@
-cabletv_promo_1,cabletv_promo_2,diwali_promo_1,internet_promo_1,internet_promo_2,internet_promo_3
+cabletv_promo_1,cabletv_promo_2,internet_promo_1,internet_promo_2
